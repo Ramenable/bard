@@ -19,41 +19,53 @@ struct ContentView: View {
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
     
+    @State var showingLoginScreen = false
+    
     var body: some View {
-        ZStack {
-            // Vertical Stack
-            VStack {
-                WelcomeText()
-                ImageIcon()
-                UsernameTextField(username: $username)
-                PasswordSecureField(password: $password)
-                if authenticationDidFail {
-                    Text("Information not correct. Try again.")
-                        .offset(y: -10)
-                        .foregroundColor(.red)
-                }
-                Button(action: {
-                    print("Login button tapped")
-                    if self.username == storedUsername && self.password == storedPassword {
-                        self.authenticationDidSucceed = true
-                        self.authenticationDidFail = false
-                    } else {
-                        self.authenticationDidFail = true
+        NavigationView {
+            ZStack {
+                // Vertical Stack
+                VStack {
+                    WelcomeText()
+                    ImageIcon()
+                    UsernameTextField(username: $username)
+                    PasswordSecureField(password: $password)
+                    if authenticationDidFail {
+                        Text("Information not correct. Try again.")
+                            .offset(y: -10)
+                            .foregroundColor(.red)
                     }
-                }) {
-                    LoginText()
-                    
+                    Button(action: {
+                        print("Login button tapped")
+                        if self.username == storedUsername && self.password == storedPassword {
+                            self.authenticationDidSucceed = true
+                            self.authenticationDidFail = false
+                            print("Authentication Did Succeed")
+                        } else {
+                            self.authenticationDidFail = true
+                        }
+                    })
+                    {
+                        LoginText()
+                    }
+                    NavigationLink(destination: {
+                        WelcomeScreenView()
+                        
+                    }, label: {
+                        SignupText()
+                    })
+                }
+                .padding()
+                if authenticationDidSucceed {
+                    Text("Login succeeded!")
+                        .font(.headline)
+                        .frame(width: 250, height: 80)
+                        .background(Color.green)
+                        .cornerRadius(20.0)
+                        .foregroundColor(.white)
                 }
             }
-            .padding()
-            if authenticationDidSucceed {
-                Text("Login succeeded!")
-                    .font(.headline)
-                    .frame(width: 250, height: 80)
-                    .background(Color.green)
-                    .cornerRadius(20.0)
-                    .foregroundColor(.white)
-            }
+            .navigationBarHidden(true)
         }
     }
 }
@@ -88,6 +100,18 @@ struct ImageIcon: View {
 struct LoginText: View {
     var body: some View {
         Text("LOGIN")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.blue)
+            .cornerRadius(15.0)
+    }
+}
+
+struct SignupText: View {
+    var body: some View {
+        Text("SIGN UP")
             .font(.headline)
             .foregroundColor(.white)
             .padding()
