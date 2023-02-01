@@ -15,7 +15,6 @@ let storedPassword = "Chimes"
 let client = LOGINBardAPIClient.default()
 
 func saveUserCredentials (username: String, password: String) {
-    print("GGGG")
     client.dynamodbmanagerPost(username: username, password: password)
 }
 
@@ -56,6 +55,10 @@ struct ContentView: View {
                     {
                         LoginText()
                     }
+                    Button(action: {saveUserCredentials (username: username, password: password)
+                    }) {
+                        SaveText()
+                    }
                     NavigationLink(destination: {
                         WelcomeScreenView()
                         
@@ -72,12 +75,6 @@ struct ContentView: View {
                         .cornerRadius(20.0)
                         .foregroundColor(.white)
                 }
-                .background(lightGreyColor)
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            Button(action: {saveUserCredentials (username: username, password: password)
-            }) {
-                LoginText()
             }
             .navigationBarHidden(true)
         }
@@ -119,6 +116,18 @@ struct LoginText: View {
             .padding()
             .frame(width: 220, height: 60)
             .background(Color.blue)
+            .cornerRadius(15.0)
+    }
+}
+
+struct SaveText: View {
+    var body: some View {
+        Text("SAVE")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.yellow)
             .cornerRadius(15.0)
     }
 }
