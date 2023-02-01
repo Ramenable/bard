@@ -9,6 +9,8 @@ import SwiftUI
 import AWSCore
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
+let storedUsername = "Bard"
+let storedPassword = "Chimes"
 
 let client = LOGINBardAPIClient.default()
 
@@ -22,18 +24,54 @@ struct ContentView: View {
     @State var username: String = ""
     @State var password: String = ""
     
+    @State var authenticationDidFail: Bool = false
+    @State var authenticationDidSucceed: Bool = false
+    
+    @State var showingLoginScreen = false
+    
     var body: some View {
-        // Vertical Stack
-        VStack {
-            WelcomeText()
-            ImageIcon()
-            TextField("Username", text: $username)
+        NavigationView {
+            ZStack {
+                // Vertical Stack
+                VStack {
+                    WelcomeText()
+                    ImageIcon()
+                    UsernameTextField(username: $username)
+                    PasswordSecureField(password: $password)
+                    if authenticationDidFail {
+                        Text("Information not correct. Try again.")
+                            .offset(y: -10)
+                            .foregroundColor(.red)
+                    }
+                    Button(action: {
+                        print("Login button tapped")
+                        if self.username == storedUsername && self.password == storedPassword {
+                            self.authenticationDidSucceed = true
+                            self.authenticationDidFail = false
+                            print("Authentication Did Succeed")
+                        } else {
+                            self.authenticationDidFail = true
+                        }
+                    })
+                    {
+                        LoginText()
+                    }
+                    NavigationLink(destination: {
+                        WelcomeScreenView()
+                        
+                    }, label: {
+                        SignupText()
+                    })
+                }
                 .padding()
-                .background(lightGreyColor)
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            SecureField("Password", text: $password)
-                .padding()
+                if authenticationDidSucceed {
+                    Text("Login succeeded!")
+                        .font(.headline)
+                        .frame(width: 250, height: 80)
+                        .background(Color.green)
+                        .cornerRadius(20.0)
+                        .foregroundColor(.white)
+                }
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
@@ -41,8 +79,8 @@ struct ContentView: View {
             }) {
                 LoginText()
             }
+            .navigationBarHidden(true)
         }
-        .padding()
     }
 }
 
@@ -80,7 +118,41 @@ struct LoginText: View {
             .foregroundColor(.white)
             .padding()
             .frame(width: 220, height: 60)
+            .background(Color.blue)
+            .cornerRadius(15.0)
+    }
+}
+
+struct SignupText: View {
+    var body: some View {
+        Text("SIGN UP")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
             .background(Color.green)
             .cornerRadius(15.0)
+    }
+}
+
+struct UsernameTextField: View {
+    @Binding var username: String
+    var body: some View {
+        TextField("Username", text: $username)
+            .padding()
+            .background(lightGreyColor)
+            .cornerRadius(5.0)
+            .padding(.bottom, 20)
+    }
+}
+
+struct PasswordSecureField: View {
+    @Binding var password: String
+    var body: some View {
+        SecureField("Password", text: $password)
+            .padding()
+            .background(lightGreyColor)
+            .cornerRadius(5.0)
+            .padding(.bottom, 20)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15D2837A2988D2430078EA0F /* WelcomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D283792988D2430078EA0F /* WelcomeScreenView.swift */; };
 		757DF67000B472E9A44785A1 /* Pods_Bard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 069690439C525A9D882A1529 /* Pods_Bard.framework */; };
 		ACB8B1C92986712B00A1451F /* BardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8B1C82986712B00A1451F /* BardApp.swift */; };
 		ACB8B1CB2986712B00A1451F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8B1CA2986712B00A1451F /* ContentView.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15D283792988D2430078EA0F /* WelcomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenView.swift; sourceTree = "<group>"; };
 		069690439C525A9D882A1529 /* Pods_Bard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB8B1C52986712B00A1451F /* Bard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB8B1C82986712B00A1451F /* BardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BardApp.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				ACB8B1FB2989CFC400A1451F /* Empty.swift */,
 				ACB8B1C82986712B00A1451F /* BardApp.swift */,
 				ACB8B1CA2986712B00A1451F /* ContentView.swift */,
+				15D283792988D2430078EA0F /* WelcomeScreenView.swift */,
 				ACB8B1F22989BEBA00A1451F /* LOGINBardAPIClient.swift */,
 				ACB8B1CC2986712E00A1451F /* Assets.xcassets */,
 				ACB8B1CE2986712E00A1451F /* Preview Content */,
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15D2837A2988D2430078EA0F /* WelcomeScreenView.swift in Sources */,
 				ACB8B1F62989BEBB00A1451F /* LOGINBardAPIClient.swift in Sources */,
 				ACB8B1FC2989CFC400A1451F /* Empty.swift in Sources */,
 				ACB8B1CB2986712B00A1451F /* ContentView.swift in Sources */,
