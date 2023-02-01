@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-bard-dev-221259-authRole",
+            "UnauthRoleArn": "arn:aws:iam::576667680819:role/amplify-bard-dev-221259-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::576667680819:role/amplify-bard-dev-221259-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-bard-dev-221259-deployment",
+            "UnauthRoleName": "amplify-bard-dev-221259-unauthRole",
+            "StackName": "amplify-bard-dev-221259",
+            "StackId": "arn:aws:cloudformation:us-east-2:576667680819:stack/amplify-bard-dev-221259/5538c970-a1de-11ed-a9de-066e08f385ed",
+            "AmplifyAppId": "d1czw4q7uzinj5"
+        },
+        "categories": {
+            "auth": {
+                "cognito138435b7": {}
+            }
+        }
+    }
+}
