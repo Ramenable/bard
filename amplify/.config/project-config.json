@@ -1,0 +1,8 @@
+{
+    "projectName": "Bard",
+    "version": "3.0",
+    "frontend": "ios",
+    "providers": [
+        "awscloudformation"
+    ]
+}

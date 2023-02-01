@@ -6,8 +6,16 @@
 //
 
 import SwiftUI
+import AWSCore
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
+
+let client = LOGINBardAPIClient.default()
+
+func saveUserCredentials (username: String, password: String) {
+    print("GGGG")
+    client.dynamodbmanagerPost(username: username, password: password)
+}
 
 struct ContentView: View {
     // Always read for changes
@@ -29,7 +37,8 @@ struct ContentView: View {
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
-            Button(action: {print("Login button tapped")}) {
+            Button(action: {saveUserCredentials (username: username, password: password)
+            }) {
                 LoginText()
             }
         }
